@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
-const from = '"SkinScannerAPP" <info@skinscanner.com>';
+const from = '"BookCollection" <info@skinscanner.com>';
 
 function setup() {
   return nodemailer.createTransport({
@@ -14,22 +14,22 @@ function setup() {
 }
 
 export function sendConfirmationEmail(user) {
-  const tranport = setup();
+  const transport = setup();
   const email = {
     from,
     to: user.email,
-    subject: "Welcome to SkinScannerAPP",
+    subject: "Welcome to BookCollection",
     text: `
-    Welcome to SkinScanner. Please, confirm your email.
+    Welcome to BookCollection. Please, confirm your email.
     ${user.generateConfirmationUrl()}
     `
   };
 
-  tranport.sendMail(email);
+  transport.sendMail(email);
 }
 
 export function sendResetPasswordEmail(user) {
-  const tranport = setup();
+  const transport = setup();
   const email = {
     from,
     to: user.email,
@@ -40,5 +40,5 @@ export function sendResetPasswordEmail(user) {
     `
   };
 
-  tranport.sendMail(email);
+  transport.sendMail(email);
 }
